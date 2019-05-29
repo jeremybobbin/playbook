@@ -1,0 +1,20 @@
+user:
+  name: jer
+  uid: 1000
+  group: users
+  shell: /usr/bin/bash
+
+
+aur:
+  packages:
+    - yay
+
+base_packages:
+  - base
+  - base-devel
+  - git
+
+dotfiles:
+  url: git@github.com:jeremybobbin/dotfiles.git
+
+fingerprint: True

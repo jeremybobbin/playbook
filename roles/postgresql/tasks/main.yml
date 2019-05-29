@@ -1,0 +1,4 @@
+---
+# tasks file for postgresql
+- name: Install PostgreSQL
+  pacman: name=postgresql state=present

@@ -1,0 +1,12 @@
+---
+# tasks file for dotfiles
+- name: Clone dotfiles
+  git: repo={{ dotfiles.url }} dest=/tmp/dotfiles accept_hostkey=yes update=yes
+  when: dotfiles is defined
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Install dotfiles
+  copy: src=/tmp/dotfiles/ dest=/home/{{ user.name }} remote_src=yes
+  become: yes
+  become_user: "{{ user.name }}"

@@ -1,0 +1,16 @@
+---
+# tasks file for base
+
+- name: Copy mirrors file
+  copy: src=mirrorlist dest=/etc/pacman.d/mirrorlist
+
+- name: Install base packages
+  pacman:
+    name: "{{ base_packages }}"
+    state: present
+
+- name: Enable multithreaded package compression
+  lineinfile:
+    dest: /etc/makepkg.conf
+    regexp: "^COMPRESSXZ"
+    line: "COMPRESSXZ=(xz -T $(nproc) -c -z -)"

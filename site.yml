@@ -1,0 +1,12 @@
+---
+- hosts: all
+  remote_user: root
+  become: yes
+  roles:
+      - { role: base, tags: ['base'] }
+      - { role: postgresql, tags: ['postgresql'] }
+      - { role: thinkpad, tags: ['thinkpad'] }
+      - { role: dotfiles, tags: ['dotfiles'] }
+  vars_prompt:
+      - name: user_password
+        prompt: "Please enter your password"
